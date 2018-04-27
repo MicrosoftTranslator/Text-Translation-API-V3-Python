@@ -13,3 +13,5 @@ The code in this repository contains examples for all of the Microsoft Text Tran
 #### Add the provided code.
 #### Replace the key value with an access key valid for your subscription.
 #### Run the program.
+
+[Translator Text API Reference](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/)

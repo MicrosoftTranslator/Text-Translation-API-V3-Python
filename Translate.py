@@ -1,44 +1,38 @@
 # -*- coding: utf-8 -*-
 
-import http.client, urllib.parse, uuid, json
+# You may need to install requests and uuid.
+# Run: pip install requests uuid
+import os, requests, uuid, json
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+# Checks to see if the Translator Text subscription key is available
+# as an environment variable. If you are setting your subscription key as a
+# string, then comment these lines out.
+if 'TRANSLATOR_TEXT_KEY' in os.environ:
+    subscriptionKey = os.environ['TRANSLATOR_TEXT_KEY']
+else:
+    print('Environment variable for TRANSLATOR_TEXT_KEY is not set.')
+    exit()
+# If you want to set your subscription key as a string, uncomment the next line.
+#subscriptionKey = 'put_your_key_here'
 
-# Replace the subscriptionKey string value with your valid subscription key.
-subscriptionKey = 'ENTER KEY HERE'
-
-host = 'api.cognitive.microsofttranslator.com'
+# If you encounter any issues with the base_url or path, make sure
+# that you are using the latest endpoint: https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate
+base_url = 'https://api.cognitive.microsofttranslator.com'
 path = '/translate?api-version=3.0'
+params = '&to=de&to=it'
+constructed_url = base_url + path + params
 
-# Translate to German and Italian.
-params = "&to=de&to=it";
+headers = {
+    'Ocp-Apim-Subscription-Key': subscriptionKey,
+    'Content-type': 'application/json',
+    'X-ClientTraceId': str(uuid.uuid4())
+}
 
-text = 'Hello, world!'
-
-def translate (content):
-
-    headers = {
-        'Ocp-Apim-Subscription-Key': subscriptionKey,
-        'Content-type': 'application/json',
-        'X-ClientTraceId': str(uuid.uuid4())
-    }
-
-    conn = http.client.HTTPSConnection(host)
-    conn.request ("POST", path + params, content, headers)
-    response = conn.getresponse ()
-    return response.read ()
-
-requestBody = [{
-    'Text' : text,
+# You can pass more than one object in body.
+body = [{
+    'text' : 'Hello World!'
 }]
-content = json.dumps(requestBody, ensure_ascii=False).encode('utf-8')
-result = translate (content)
+request = requests.post(constructed_url, headers=headers, json=body)
+response = request.json()
 
-# Note: We convert result, which is JSON, to and from an object so we can pretty-print it.
-# We want to avoid escaping any Unicode characters that result contains. See:
-# https://stackoverflow.com/questions/18337407/saving-utf-8-texts-in-json-dumps-as-utf8-not-as-u-escape-sequence
-output = json.dumps(json.loads(result), indent=4, ensure_ascii=False)
-
-print (output)
+print(json.dumps(response, sort_keys=True, indent=4, separators=(',', ': ')))

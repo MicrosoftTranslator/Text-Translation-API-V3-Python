@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+# This sample runs on Python 2.7.x and Python 3.x.
 # You may need to install requests and uuid.
 # Run: pip install requests uuid
 import os, requests, uuid, json

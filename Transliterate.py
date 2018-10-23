@@ -1,45 +1,46 @@
 # -*- coding: utf-8 -*-
 
-import http.client, urllib.parse, uuid, json
+# This simple app uses the '/transliterate' resource to transliterate text from
+# one script to another. In this sample, Japenese is transliterated to use the
+# Latin alphabet.
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+# This sample runs on Python 2.7.x and Python 3.x.
+# You may need to install requests and uuid.
+# Run: pip install requests uuid
 
-# Replace the subscriptionKey string value with your valid subscription key.
-subscriptionKey = 'ENTER KEY HERE'
 
-host = 'api.cognitive.microsofttranslator.com'
+import os, requests, uuid, json
+
+# Checks to see if the Translator Text subscription key is available
+# as an environment variable. If you are setting your subscription key as a
+# string, then comment these lines out.
+if 'TRANSLATOR_TEXT_KEY' in os.environ:
+    subscriptionKey = os.environ['TRANSLATOR_TEXT_KEY']
+else:
+    print('Environment variable for TRANSLATOR_TEXT_KEY is not set.')
+    exit()
+# If you want to set your subscription key as a string, uncomment the next line.
+#subscriptionKey = 'put_your_key_here'
+
+# If you encounter any issues with the base_url or path, make sure
+# that you are using the latest endpoint: https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate
+base_url = 'https://api.cognitive.microsofttranslator.com'
 path = '/transliterate?api-version=3.0'
+params = '&language=ja&fromScript=jpan&toScript=latn'
+constructed_url = base_url + path + params
 
-# Transliterate text in Japanese from Japanese script (i.e. Hiragana/Katakana/Kanji) to Latin script.
-params = '&language=ja&fromScript=jpan&toScript=latn';
+headers = {
+    'Ocp-Apim-Subscription-Key': subscriptionKey,
+    'Content-type': 'application/json',
+    'X-ClientTraceId': str(uuid.uuid4())
+}
 
-# Transliterate "good afternoon".
-text = 'こんにちは'
-
-def transliterate (content):
-
-    headers = {
-        'Ocp-Apim-Subscription-Key': subscriptionKey,
-        'Content-type': 'application/json',
-        'X-ClientTraceId': str(uuid.uuid4())
-    }
-
-    conn = http.client.HTTPSConnection(host)
-    conn.request ("POST", path + params, content, headers)
-    response = conn.getresponse ()
-    return response.read ()
-
-requestBody = [{
-    'Text' : text,
+# Transliterate "good afternoon" from source Japanese.
+# Note: You can pass more than one object in body.
+body = [{
+    'text': 'こんにちは'
 }]
-content = json.dumps(requestBody, ensure_ascii=False).encode('utf-8')
-result = transliterate (content)
+request = requests.post(constructed_url, headers=headers, json=body)
+response = request.json()
 
-# Note: We convert result, which is JSON, to and from an object so we can pretty-print it.
-# We want to avoid escaping any Unicode characters that result contains. See:
-# https://stackoverflow.com/questions/18337407/saving-utf-8-texts-in-json-dumps-as-utf8-not-as-u-escape-sequence
-output = json.dumps(json.loads(result), indent=4, ensure_ascii=False)
-
-print (output)
+print(json.dumps(response, sort_keys=True, indent=4, ensure_ascii=False, separators=(',', ': ')))

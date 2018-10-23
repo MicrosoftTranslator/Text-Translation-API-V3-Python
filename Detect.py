@@ -1,43 +1,44 @@
 # -*- coding: utf-8 -*-
 
-import http.client, urllib.parse, uuid, json
+# This simple app uses the '/detect' resource to identify the language of
+# the provided text or texts.
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+# This sample runs on Python 2.7.x and Python 3.x.
+# You may need to install requests and uuid.
+# Run: pip install requests uuid
 
-# Replace the subscriptionKey string value with your valid subscription key.
-subscriptionKey = 'ENTER KEY HERE'
 
-host = 'api.cognitive.microsofttranslator.com'
+import os, requests, uuid, json
+
+# Checks to see if the Translator Text subscription key is available
+# as an environment variable. If you are setting your subscription key as a
+# string, then comment these lines out.
+if 'TRANSLATOR_TEXT_KEY' in os.environ:
+    subscriptionKey = os.environ['TRANSLATOR_TEXT_KEY']
+else:
+    print('Environment variable for TRANSLATOR_TEXT_KEY is not set.')
+    exit()
+# If you want to set your subscription key as a string, uncomment the next line.
+#subscriptionKey = 'put_your_key_here'
+
+# If you encounter any issues with the base_url or path, make sure
+# that you are using the latest endpoint: https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect
+base_url = 'https://api.cognitive.microsofttranslator.com'
 path = '/detect?api-version=3.0'
-
 params = ''
+constructed_url = base_url + path + params
 
-text = 'Salve, mondo!'
+headers = {
+    'Ocp-Apim-Subscription-Key': subscriptionKey,
+    'Content-type': 'application/json',
+    'X-ClientTraceId': str(uuid.uuid4())
+}
 
-def detect (content):
-
-    headers = {
-        'Ocp-Apim-Subscription-Key': subscriptionKey,
-        'Content-type': 'application/json',
-        'X-ClientTraceId': str(uuid.uuid4())
-    }
-
-    conn = http.client.HTTPSConnection(host)
-    conn.request ("POST", path, content, headers)
-    response = conn.getresponse ()
-    return response.read ()
-
-requestBody = [{
-    'Text' : text,
+# You can pass more than one object in body.
+body = [{
+    'text': 'Salve, mondo!'
 }]
-content = json.dumps(requestBody, ensure_ascii=False).encode('utf-8')
-result = detect (content)
+request = requests.post(constructed_url, headers=headers, json=body)
+response = request.json()
 
-# Note: We convert result, which is JSON, to and from an object so we can pretty-print it.
-# We want to avoid escaping any Unicode characters that result contains. See:
-# https://stackoverflow.com/questions/18337407/saving-utf-8-texts-in-json-dumps-as-utf8-not-as-u-escape-sequence
-output = json.dumps(json.loads(result), indent=4, ensure_ascii=False)
-
-print (output)
+print(json.dumps(response, sort_keys=True, indent=4, ensure_ascii=False, separators=(',', ': ')))

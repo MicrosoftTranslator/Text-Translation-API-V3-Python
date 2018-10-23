@@ -22,7 +22,7 @@ else:
 #subscriptionKey = 'put_your_key_here'
 
 # If you encounter any issues with the base_url or path, make sure
-# that you are using the latest endpoint: https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate
+# that you are using the latest endpoint: https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup
 base_url = 'https://api.cognitive.microsofttranslator.com'
 path = '/dictionary/lookup?api-version=3.0'
 params = '&from=en&to=es';

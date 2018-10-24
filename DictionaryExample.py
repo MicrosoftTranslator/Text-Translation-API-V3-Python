@@ -28,9 +28,6 @@ path = '/dictionary/examples?api-version=3.0'
 params = '&from=en&to=fr';
 constructed_url = base_url + path + params
 
-text = 'great'
-translation = 'formidable'
-
 headers = {
     'Ocp-Apim-Subscription-Key': subscriptionKey,
     'Content-type': 'application/json',

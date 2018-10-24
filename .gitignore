@@ -1,0 +1,4 @@
+# Operating System files
+ .DS_Store
+ .gitignore
+Thumbs.db

@@ -1,17 +1,30 @@
-# Text-Translation-API-V3-Python
+# Translator Text API V3 - Python
+
+This repository includes Python code samples for Microsoft Translator. The samples are designed to run on Python 2.7.x and Python 3.x. Each sample corresponds to a **Quickstart** activity on [doc.microsoft.com](https://docs.microsoft.com/azure/cognitive-services/translator/), including:
+
+* [Translating text](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-python-translate)
+* [Transliterating text](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-python-transliterate)
+* [Identifying the language of source text](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-python-detect)
+* [Getting alternate translations](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-python-dictionary)
+* [Getting a complete list of supported languages](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-python-languages)
+* [Determining sentence length](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-python-sentences)
 
 ## Prerequisites
-You will need Python 3.x to run this code.
 
-You must have a Cognitive Services API account with Microsoft Translator Text API. You will need a paid subscription key from your Azure dashboard.
+Here's what you'll need before you use these samples:
 
+* Python 2.7.x or 3.x
+* An Azure subscription with Translator Text enabled. [Sign-up for a free account](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)!
 
 ## Code samples
-The code in this repository contains examples for all of the Microsoft Text Translator V3 API methods. Each file demonstrates a single method. To try out a method:
 
-#### Create a new Python project in your favorite IDE.
-#### Add the provided code.
-#### Replace the key value with an access key valid for your subscription.
-#### Run the program.
+This repository includes a sample for each of the methods made available by the Microsoft Translator Text API v3. To use each of the samples, follow these instructions:
 
-[Translator Text API Reference](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/)
+* Create a new project in your favorite IDE or editor.
+* Copy the code from one of the samples into your project.
+* Set your subscription key.
+* Run the program. For example: `python Translate.py`.
+
+## Next steps
+
+* [v3 Translator Text API Reference](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/)

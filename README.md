@@ -1,4 +1,4 @@
-# Translator Text API V3 - Python
+# Translator Text API V3 - Python Samples
 
 This repository includes Python code samples for Microsoft Translator. The samples are designed to run on Python 2.7.x and Python 3.x. Each sample corresponds to a **Quickstart** activity on [doc.microsoft.com](https://docs.microsoft.com/azure/cognitive-services/translator/), including:
 

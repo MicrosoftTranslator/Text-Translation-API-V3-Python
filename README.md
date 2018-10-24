@@ -13,6 +13,7 @@ This repository includes Python code samples for Microsoft Translator. The sampl
 
 Here's what you'll need before you use these samples:
 
+* Your favorite IDE or text editor
 * Python 2.7.x or 3.x
 * An Azure subscription with Translator Text enabled. [Sign-up for a free account](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)!
 
@@ -25,6 +26,7 @@ This repository includes a sample for each of the methods made available by the 
 * Set your subscription key.
 * Run the program. For example: `python Translate.py`.
 
-## Next steps
+## Resources
 
-* [v3 Translator Text API Reference](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/)
+* [What is the Translator Text API?](https://docs.microsoft.com/azure/cognitive-services/translator/translator-info-overview)
+* [v3 Translator Text API Reference](https://docs.microsoft.com/azure/cognitive-services/translator/)

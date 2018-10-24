@@ -25,8 +25,7 @@ else:
 # that you are using the latest endpoint: https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect
 base_url = 'https://api.cognitive.microsofttranslator.com'
 path = '/detect?api-version=3.0'
-params = ''
-constructed_url = base_url + path + params
+constructed_url = base_url + path
 
 headers = {
     'Ocp-Apim-Subscription-Key': subscriptionKey,

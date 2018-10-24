@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # This simple app uses the '/transliterate' resource to transliterate text from
-# one script to another. In this sample, Japenese is transliterated to use the
+# one script to another. In this sample, Japanese is transliterated to use the
 # Latin alphabet.
 
 # This sample runs on Python 2.7.x and Python 3.x.

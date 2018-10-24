@@ -30,3 +30,4 @@ This repository includes a sample for each of the methods made available by the 
 
 * [What is the Translator Text API?](https://docs.microsoft.com/azure/cognitive-services/translator/translator-info-overview)
 * [v3 Translator Text API Reference](https://docs.microsoft.com/azure/cognitive-services/translator/)
+* [Supported languages](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)

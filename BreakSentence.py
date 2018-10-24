@@ -25,7 +25,7 @@ else:
 # that you are using the latest endpoint: https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence
 base_url = 'https://api.cognitive.microsofttranslator.com'
 path = '/breaksentence?api-version=3.0'
-params = ''
+params = '&language=en'
 constructed_url = base_url + path + params
 
 headers = {

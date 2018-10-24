@@ -1,35 +1,39 @@
-import http.client, urllib.parse, json
+# -*- coding: utf-8 -*-
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+# This simple app performs a GET request to retrieve a list of languages
+# supported by Microsoft Translator.
 
-# Replace the subscriptionKey string value with your valid subscription key.
-subscriptionKey = '31b6016565ac4e1585b1fdb688e42c6d'
+# This sample runs on Python 2.7.x and Python 3.x.
+# You may need to install requests and uuid.
+# Run: pip install requests uuid
 
-host = 'api.cognitive.microsofttranslator.com'
+
+import os, requests, uuid, json
+
+# Checks to see if the Translator Text subscription key is available
+# as an environment variable. If you are setting your subscription key as a
+# string, then comment these lines out.
+if 'TRANSLATOR_TEXT_KEY' in os.environ:
+    subscriptionKey = os.environ['TRANSLATOR_TEXT_KEY']
+else:
+    print('Environment variable for TRANSLATOR_TEXT_KEY is not set.')
+    exit()
+# If you want to set your subscription key as a string, uncomment the next line.
+#subscriptionKey = 'put_your_key_here'
+
+# If you encounter any issues with the base_url or path, make sure
+# that you are using the latest endpoint: https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages
+base_url = 'https://api.cognitive.microsofttranslator.com'
 path = '/languages?api-version=3.0'
+constructed_url = base_url + path
 
-output_path = 'output.txt'
+headers = {
+    'Ocp-Apim-Subscription-Key': subscriptionKey,
+    'Content-type': 'application/json',
+    'X-ClientTraceId': str(uuid.uuid4())
+}
 
-def get_languages ():
+request = requests.get(constructed_url, headers=headers)
+response = request.json()
 
-    headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
-
-    conn = http.client.HTTPSConnection(host)
-    conn.request ("GET", path, None, headers)
-    response = conn.getresponse ()
-    return response.read ()
-
-result = get_languages ()
-
-# Note: We convert result, which is JSON, to and from an object so we can pretty-print it.
-# We want to avoid escaping any Unicode characters that result contains. See:
-# https://stackoverflow.com/questions/18337407/saving-utf-8-texts-in-json-dumps-as-utf8-not-as-u-escape-sequence
-json = json.dumps(json.loads(result), indent=4, ensure_ascii=False).encode('utf-8')
-
-print(json)
-
-f = open(output_path, 'wb')
-f.write (json)
-f.close
+print(json.dumps(response, sort_keys=True, indent=4, ensure_ascii=False, separators=(',', ': ')))

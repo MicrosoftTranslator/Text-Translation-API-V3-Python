@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# This simple app uses the '/translate' resource to transliterate text from
+# This simple app uses the '/translate' resource to translate text from
 # one language to another.
 
 # This sample runs on Python 2.7.x and Python 3.x.

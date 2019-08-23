@@ -7,14 +7,17 @@
 # You may need to install requests and uuid.
 # Run: pip install requests uuid
 
-
 import os, requests, uuid, json
+
+endpoint_var_name = 'TRANSLATOR_TEXT_ENDPOINT'
+if not endpoint_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(endpoint_var_name))
+endpoint = os.environ[endpoint_var_name]
 
 # If you encounter any issues with the base_url or path, make sure
 # that you are using the latest endpoint: https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages
-base_url = 'https://api.cognitive.microsofttranslator.com'
 path = '/languages?api-version=3.0'
-constructed_url = base_url + path
+constructed_url = endpoint + path
 
 headers = {
     'Content-type': 'application/json',

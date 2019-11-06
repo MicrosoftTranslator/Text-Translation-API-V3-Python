@@ -22,7 +22,7 @@ endpoint = os.environ[endpoint_var_name]
 # If you encounter any issues with the base_url or path, make sure
 # that you are using the latest endpoint: https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate
 path = '/translate?api-version=3.0'
-params = '&to=de&to=it'
+params = '&from=en&to=de&to=it'
 constructed_url = endpoint + path + params
 
 headers = {

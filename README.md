@@ -30,11 +30,11 @@ Here's what you'll need before you use these samples:
 
 * Your favorite IDE or text editor
 * Python 2.7.x or 3.x
-* An Azure subscription with Translator Text enabled. [Sign-up for a free account](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)!
+* An Azure subscription with Translator enabled. [Sign-up for a free account](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)!
 
 ## Code samples
 
-This repository includes a sample for each of the methods made available by the Microsoft Translator Text API v3. To use each of the samples, follow these instructions:
+This repository includes a sample for each of the methods made available by the Microsoft Translator API v3. To use each of the samples, follow these instructions:
 
 * Create a new project in your favorite IDE or editor.
 * Copy the code from one of the samples into your project.
@@ -43,6 +43,6 @@ This repository includes a sample for each of the methods made available by the 
 
 ## Resources
 
-* [What is the Translator Text API?](https://docs.microsoft.com/azure/cognitive-services/translator/translator-info-overview)
-* [v3 Translator Text API Reference](https://docs.microsoft.com/azure/cognitive-services/translator/)
+* [What is Translator?](https://docs.microsoft.com/azure/cognitive-services/translator/translator-info-overview)
+* [v3 Translator API Reference](https://docs.microsoft.com/azure/cognitive-services/translator/)
 * [Supported languages](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)

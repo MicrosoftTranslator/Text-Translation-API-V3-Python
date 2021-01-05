@@ -30,7 +30,8 @@ Here's what you'll need before you use these samples:
 
 * Your favorite IDE or text editor
 * Python 2.7.x or 3.x
-* An Azure subscription with Translator enabled. [Sign-up for a free account](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)!
+* An Azure subscription - [Sign-up for a free account](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)!
+* A Translator resource - [Create a Translator resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)
 
 ## Code samples
 

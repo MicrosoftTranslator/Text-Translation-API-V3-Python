@@ -16,7 +16,7 @@ products:
 This repository includes Python code samples for Microsoft Translator. The samples are designed to run on Python 2.7.x and Python 3.x. Each sample corresponds to a [Quickstart](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translator) activity on doc.microsoft.com, including:
 
 * Translating text
-* Transliterating text
+* Transliterating text 
 * Identifying the language of source text
 * Getting alternate translations
 * Getting a complete list of supported languages

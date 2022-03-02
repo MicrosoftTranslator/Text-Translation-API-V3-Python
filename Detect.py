@@ -19,6 +19,12 @@ if not endpoint_var_name in os.environ:
     raise Exception('Please set/export the environment variable: {}'.format(endpoint_var_name))
 endpoint = os.environ[endpoint_var_name]
 
+region_var_name = 'TRANSLATOR_REGION'
+if not region_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(region_var_name))
+region = os.environ[region_var_name]
+
+
 # If you encounter any issues with the base_url or path, make sure
 # that you are using the latest endpoint: https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect
 path = '/detect?api-version=3.0'
@@ -26,6 +32,7 @@ constructed_url = endpoint + path
 
 headers = {
     'Ocp-Apim-Subscription-Key': subscription_key,
+    'Ocp-Apim-Subscription-Region': region,
     'Content-type': 'application/json',
     'X-ClientTraceId': str(uuid.uuid4())
 }

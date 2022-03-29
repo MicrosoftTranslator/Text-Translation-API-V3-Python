@@ -14,6 +14,11 @@ if not key_var_name in os.environ:
     raise Exception('Please set/export the environment variable: {}'.format(key_var_name))
 subscription_key = os.environ[key_var_name]
 
+region_var_name = 'TRANSLATOR_TEXT_REGION'
+if not region_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(region_var_name))
+region = os.environ[region_var_name]
+
 endpoint_var_name = 'TRANSLATOR_TEXT_ENDPOINT'
 if not endpoint_var_name in os.environ:
     raise Exception('Please set/export the environment variable: {}'.format(endpoint_var_name))
@@ -26,6 +31,7 @@ constructed_url = endpoint + path
 
 headers = {
     'Ocp-Apim-Subscription-Key': subscription_key,
+    'Ocp-Apim-Subscription-Region': region,
     'Content-type': 'application/json',
     'X-ClientTraceId': str(uuid.uuid4())
 }

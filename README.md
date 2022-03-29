@@ -39,7 +39,11 @@ This repository includes a sample for each of the methods made available by the 
 
 * Create a new project in your favorite IDE or editor.
 * Copy the code from one of the samples into your project.
-* Set your subscription key.
+* Set your subscription key, the Azure region of your resource and the Text Translation endpoint as environment variables
+`TRANSLATOR_TEXT_SUBSCRIPTION_KEY`
+`TRANSLATOR_TEXT_REGION`
+`TRANSLATOR_TEXT_ENDPOINT`
+
 * Run the program. For example: `python Translate.py`.
 
 ## Resources
